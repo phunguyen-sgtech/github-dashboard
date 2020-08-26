@@ -1,3 +1,30 @@
+.container-wrapper {
+  padding: 20px 0px;
+}
+
+.text-ell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.img-block{
+  width: 20% !important;
+  display: flex;
+  align-self: center;
+  padding-top: 7px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.padding-12 {
+  padding: 12px;
+}
+
+
 .App {
   text-align: center;
 }
