@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NotFound = () => (
-    <div>
+    <div style={{paddingLeft: '30px'}}>
         There is no data
     </div>
 );
