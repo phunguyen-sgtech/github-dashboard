@@ -19,13 +19,14 @@ function App() {
           <Row>
             <Col md={6}>
               <Form.Control
-                id="inlineFormInputName2"
+                data-testid="search-input"
                 placeholder="Input Username"
                 onChange={e => setSearch(e.target.value)}
               />
             </Col>
             <Col md={2}>
               <Button
+                data-testid="search-btn"
                 onClick={() => {
                   dispatch(fetchReposAPI(search));
                 }}
@@ -36,7 +37,7 @@ function App() {
             </Col>
           </Row>
 
-          {loading ? (<Spinner  animation="border" variant="primary" />) : (
+          {loading ? (<Spinner animation="border" variant="primary" />) : (
             <Row className="display-block">
               <Col md={12} sm={12} xs={12} className="padding-12">
                 <Row>
@@ -57,7 +58,7 @@ function App() {
                     <Title title={'List of originizations'} />
                   </Col>
                   {orgs && orgs.length > 0 ? (orgs.map((o, i) => (
-                    <Col md={6} sm={12} xs={12} key={i} style={{ padding: '20px' }}>
+                    <Col data-testid={`orgs-card${i}`} md={6} sm={12} xs={12} key={i} style={{ padding: '20px' }}>
                       <MyCard name={o.name} description={o.description} imgUrl={o.avatarUrl} url={o.url} />
                     </Col>
                   ))) : (<NotFound />)}

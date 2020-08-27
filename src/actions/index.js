@@ -29,18 +29,27 @@ export const fetchReposAPI = userName => dispatch => {
       return [reposData, orgsData];
     })
     .then(([reposList, orgsList]) => {
-      
-      let convertedReposList = (reposList || []).map(r => ({
-        name: r.name,
-        description: r.description || 'description',
-        htmlUrl: r.html_url
-      }))
+      let convertedReposList = [];
+      let convertedOrgsList = [];
+      const isErrRepo = reposList.message === "Not Found";
 
-      let convertedOrgsList = (orgsList || []).map(o => ({
-        description: o.description || 'description',
-        avatarUrl: o.avatar_url,
-        url: `https://github.com/${o.login}`
-      }))
+      const isErrOrgs = orgsList.message === "Not Found";
+      if (!isErrRepo) {
+        convertedReposList = (reposList || []).map(r => ({
+          name: r.name,
+          description: r.description || 'description',
+          htmlUrl: r.html_url
+        }))
+      }
+     
+      if (!isErrOrgs) {
+        convertedOrgsList = (orgsList || []).map(o => ({
+          description: o.description || 'description',
+          avatarUrl: o.avatar_url,
+          url: `https://github.com/${o.login}`
+        }))
+      }
+   
       dispatch(fetchReposSC({ reposList: convertedReposList, orgsList: convertedOrgsList }));
     })
     .catch(err => {
