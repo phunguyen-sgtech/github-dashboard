@@ -6,8 +6,6 @@ import thunk from "redux-thunk";
 
 import rootReducer from "../reducers";
 import App from "../App";
-import RepoList from '../components/RepoList'
-import OrgList from '../components/OrgList'
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -42,33 +40,3 @@ describe("test search section", () => {
   });
 
 })
-
-describe("test orginization list", () => {
-  test("Orginization - no data", () => {
-    const { getByText } = render(<OrgList data={[]} />);
-    expect(getByText("There is no data")).not.toBeNull();
-  });
-
-  test("Orginization - with data", () => {
-    const data = [{ name: "Org 1" }, { name: "Org 2" }];
-    const { getByText } = render(<OrgList data={data} />);
-
-    expect(getByText("Org 1")).not.toBeNull();
-    expect(getByText("Org 2")).not.toBeNull();
-  });
-});
-
-describe("test repositories list", () => {
-  test("repositore - no data", () => {
-    const { getByText } = render(<RepoList data={[]} />);
-    expect(getByText("There is no data")).not.toBeNull();
-  });
-
-  test(" repositore - with data", () => {
-    const data = [{ name: "Repo 1" }, { name: "Repo 2" }];
-    const { getByText } = render(<RepoList data={data} />);
-
-    expect(getByText("Repo 1")).not.toBeNull();
-    expect(getByText("Repo 2")).not.toBeNull();
-  });
-});

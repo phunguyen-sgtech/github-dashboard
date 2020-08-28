@@ -11,7 +11,7 @@ const RepoList = ({ data = [] }) => {
         if (data.length === 0)
             return (<NotFound />)
         return (data?.map(d => (
-            <Col md={6} xs={12} style={{ padding: '20px' }} key={d.htmlUrl}>
+            <Col md={6} xs={12} style={{ padding: '20px' }} key={d.id}>
                 <RepoItem name={d.name} description={d.description} htmlUrl={d.htmlUrl} />
             </Col>
         )))

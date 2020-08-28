@@ -36,6 +36,7 @@ export const fetchReposAPI = userName => dispatch => {
       const isErrOrgs = orgsList.message === "Not Found";
       if (!isErrRepo) {
         convertedReposList = (reposList || []).map(r => ({
+          id: r.id,
           name: r.name,
           description: r.description || 'description',
           htmlUrl: r.html_url
@@ -44,6 +45,7 @@ export const fetchReposAPI = userName => dispatch => {
      
       if (!isErrOrgs) {
         convertedOrgsList = (orgsList || []).map(o => ({
+          id: o.id,
           description: o.description || 'description',
           avatarUrl: o.avatar_url,
           url: `https://github.com/${o.login}`
