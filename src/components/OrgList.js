@@ -13,7 +13,7 @@ const OrgList = ({ data = [] }) => {
             return (<NotFound />)
         return (data?.map(d => (
             <Col md={6} xs={12} style={{ padding: '20px' }} key={d.id}>
-                <OrgItem name={d.name} description={d.description} imgUrl={d.avatarUrl} url={d.urla} />
+                <OrgItem name={d.name} description={d.description} imgUrl={d.avatarUrl} url={d.url} />
             </Col>)))
     }
 
